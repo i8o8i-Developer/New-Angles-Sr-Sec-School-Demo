@@ -1,0 +1,230 @@
+import Layout from "@/Components/Layout/Layout";
+import { Button } from "@/Components/ui/Button";
+import { Input } from "@/Components/ui/Input";
+import { Textarea } from "@/Components/ui/Textarea";
+import { Label } from "@/Components/ui/Label";
+import { Phone, Mail, MapPin, Clock, MessageCircle, Send } from "lucide-react";
+import heroSchool from "@/Assets/IMG-S-1.jpg";
+import { useState } from "react";
+import { toast } from "sonner";
+
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast.success("Message Sent Successfully! We Will Get Back To You Soon.");
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+    });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <Layout>
+      {/* Hero Banner */}
+      <section className="relative h-64 md:h-80">
+        <img src={heroSchool} alt="Contact Us" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-primary/80" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center text-primary-foreground">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+            <p className="text-lg opacity-90">We'd Love to Hear From You</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Content */}
+      <section className="py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Contact Info */}
+            <div>
+              <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-2">
+                Get In Touch
+              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                Contact Information
+              </h2>
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                Have Questions About Admissions, Academics, Or Anything Else? We're Here To Help. 
+                Reach Out To Us Through Any Of The Following Channels.
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground mb-1">Address</h3>
+                    <p className="text-muted-foreground">
+                      NEW ANGELS SENIOR SECONDARY SCHOOL<br />
+                      KATRA ROAD, PRATAPGARH - 230001<br />
+                      Uttar Pradesh
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground mb-1">Phone</h3>
+                    <p className="text-muted-foreground">
+                      9838907304<br />
+                      9918926330
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground mb-1">Email</h3>
+                    <p className="text-muted-foreground">
+                      angelscollegepbh@gmail.com<br />
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Clock className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground mb-1">Office Hours</h3>
+                    <p className="text-muted-foreground">
+                      Monday - Saturday: 8:00 AM - 4:00 PM<br />
+                      Sunday: Closed
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* WhatsApp Button */}
+              <a
+                href="https://wa.me/919876543210"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+              >
+                <MessageCircle className="h-5 w-5" />
+                Chat On WhatsApp
+              </a>
+            </div>
+
+            {/* Contact Form */}
+            <div className="bg-card border border-border p-8 rounded-lg shadow-md">
+              <h3 className="text-2xl font-bold text-card-foreground mb-6">Send Us A Message</h3>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="name">Your Name *</Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Enter Your Name"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="phone">Phone Number *</Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      placeholder="+91 XXXXXXXXXX"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label htmlFor="email">Email Address</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="email@example.com"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="subject">Subject *</Label>
+                  <Input
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    placeholder="What Is This Regarding?"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="message">Your Message *</Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    placeholder="Write Your Message Here..."
+                    rows={5}
+                  />
+                </div>
+                <Button type="submit" className="w-full" size="lg">
+                  <Send className="h-4 w-4 mr-2" />
+                  Send Message
+                </Button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map */}
+      <section className="bg-secondary">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-foreground">Our Location</h2>
+          </div>
+          <div className="rounded-lg overflow-hidden border border-border shadow-md">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14356.874662052298!2d81.94076657295226!3d25.89518124653115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399a96a409d6589b%3A0x6609fc1d8753ac97!2sNew%20Angels%20Senior%20Secondary%20School!5e0!3m2!1sen!2sin!4v1770834818245!5m2!1sen!2sin"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="School Location Map"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default Contact;
