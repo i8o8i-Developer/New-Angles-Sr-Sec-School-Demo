@@ -7,14 +7,22 @@ import { toast } from "sonner";
 
 const TCDownloadSection = () => {
   const [studentId, setStudentId] = useState("");
+  const [showDownload, setShowDownload] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!studentId) {
       toast.error("Please Enter A Valid Student ID");
+      setShowDownload(false);
       return;
     }
-    toast.success("TC Download Initiated. Please Check Your Downloads Folder.");
+    if (studentId === "123456") {
+      toast.success("TC Download Initiated. Please Check Your Downloads Folder.");
+      setShowDownload(true);
+    } else {
+      toast.error("No TC Found For This Student ID");
+      setShowDownload(false);
+    }
     setStudentId("");
   };
 
@@ -54,6 +62,16 @@ const TCDownloadSection = () => {
                 Download TC
               </Button>
             </form>
+            {showDownload && (
+              <a
+                href="/Documents/FakeTC.txt"
+                download
+                className="inline-flex items-center gap-2 mt-6 px-5 py-2 bg-primary text-primary-foreground rounded-lg font-semibold shadow hover:bg-primary/90 transition-colors border border-primary"
+              >
+                <Download className="h-5 w-5" />
+                Download TC (TXT)
+              </a>
+            )}
             <p className="text-sm text-muted-foreground mt-6 flex items-center gap-2">
               <AlertCircle className="h-4 w-4" />
               For Any Issues, Contact The School Office.
