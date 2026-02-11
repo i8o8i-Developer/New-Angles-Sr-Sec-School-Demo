@@ -105,7 +105,7 @@ const Notices = () => {
                   <p className="text-muted-foreground leading-relaxed mb-4">{notice.content}</p>
                   {notice.attachment && (
                     <a
-                      href={`/Src/Assets/Documents/FakeNoticeAttachment${notice.id === 4 ? "1" : notice.id === 6 ? "2" : "3"}.txt`}
+                      href={`/Documents/FakeNoticeAttachment${notice.id === 4 ? "1" : notice.id === 6 ? "2" : "3"}.txt`}
                       download
                       className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
                     >
