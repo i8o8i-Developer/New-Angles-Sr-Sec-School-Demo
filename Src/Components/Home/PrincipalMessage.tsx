@@ -37,9 +37,9 @@ const PrincipalMessage = () => {
               </blockquote>
             </div>
             <div className="mt-6 pl-8">
-              <p className="font-bold text-foreground">Mr. Bipin Kumar Soni, M.A., B.Ed.</p>
+              <p className="font-bold text-foreground">Mr. Bipin Kumar Soni</p>
               <p className="text-primary font-medium">Principal</p>
-              <p className="text-sm text-muted-foreground">M.A., M.Ed., Ph.D.</p>
+              <p className="text-sm text-muted-foreground">M.A., B.Ed.</p>
             </div>
           </div>
 
