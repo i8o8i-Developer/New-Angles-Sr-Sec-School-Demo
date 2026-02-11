@@ -1,0 +1,5 @@
+Class: Temp Student
+Fee Structure:
+- Admission Fee: ₹1000
+- Tuition Fee: ₹500/Month
+- Exam Fee: ₹200/Term

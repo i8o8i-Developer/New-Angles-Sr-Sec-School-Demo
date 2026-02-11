@@ -104,10 +104,14 @@ const Notices = () => {
                   <h3 className="text-xl font-bold text-card-foreground mb-3">{notice.title}</h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">{notice.content}</p>
                   {notice.attachment && (
-                    <button className="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+                    <a
+                      href={`/Src/Assets/Documents/FakeNoticeAttachment${notice.id === 4 ? "1" : notice.id === 6 ? "2" : "3"}.txt`}
+                      download
+                      className="inline-flex items-center gap-2 text-primary font-medium hover:underline"
+                    >
                       <Download className="h-4 w-4" />
                       Download Attachment
-                    </button>
+                    </a>
                   )}
                 </div>
               </div>

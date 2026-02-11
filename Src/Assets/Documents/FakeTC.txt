@@ -1,0 +1,7 @@
+Name: Temp Student
+Class: 10
+Date of Birth: 01/01/2010
+Date of Admission: 01/04/2020
+Date of Leaving: 01/02/2026
+Reason: Transfer
+Remarks: Temporary Record For Demo Purposes.
